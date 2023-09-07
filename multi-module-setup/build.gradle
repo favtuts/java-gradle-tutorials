@@ -4,6 +4,7 @@ plugins {
 
 allprojects {
 
+    println "Hello ${project.name}"
     apply plugin: 'java'
 
     group = 'org.favtuts'
