@@ -1,2 +1,3 @@
 rootProject.name = 'multi-module-setup'
+include 'module-1'
 
