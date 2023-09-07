@@ -2,25 +2,32 @@ plugins {
     id 'java'
 }
 
+def javaProjects = [
+        project(':module-1'),
+        project(':module-2')
+]
+
+configure(javaProjects) {
+    println "Hello ${project.name}"
+
+    apply plugin: 'java'
+
+    group = 'org.favtuts'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
 subprojects {
 
-    println "Hello ${project.name}"
-    if (['module-1'].contains(project.name)) {
-        apply plugin: 'java'
-
-        group = 'org.favtuts'
-        version = '1.0-SNAPSHOT'
-
-        repositories {
-            mavenCentral()
-        }
-
-        dependencies {
-
-        }
-
-        test {
-            useJUnitPlatform()
-        }
-    }
 }
