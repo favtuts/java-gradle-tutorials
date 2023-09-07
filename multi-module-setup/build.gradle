@@ -5,21 +5,22 @@ plugins {
 subprojects {
 
     println "Hello ${project.name}"
-    apply plugin: 'java'
+    if (['module-1'].contains(project.name)) {
+        apply plugin: 'java'
 
-    group = 'org.favtuts'
-    version = '1.0-SNAPSHOT'
+        group = 'org.favtuts'
+        version = '1.0-SNAPSHOT'
 
-    repositories {
-        mavenCentral()
+        repositories {
+            mavenCentral()
+        }
+
+        dependencies {
+
+        }
+
+        test {
+            useJUnitPlatform()
+        }
     }
-
-    dependencies {
-
-    }
-
-    test {
-        useJUnitPlatform()
-    }
-
 }
