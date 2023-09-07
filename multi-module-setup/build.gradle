@@ -2,18 +2,23 @@ plugins {
     id 'java'
 }
 
-group = 'org.favtuts'
-version = '1.0-SNAPSHOT'
+allprojects {
 
-repositories {
-    mavenCentral()
-}
+    apply plugin: 'java'
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
+    group = 'org.favtuts'
+    version = '1.0-SNAPSHOT'
 
-test {
-    useJUnitPlatform()
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
 }
