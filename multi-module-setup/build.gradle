@@ -29,5 +29,14 @@ configure(javaProjects) {
 }
 
 subprojects {
-
+    // Fixed: Gradle 8+ toolchain error "Toolchain from `executable` property does not match toolchain from `javaLauncher` property"
+    // https://youtrack.jetbrains.com/issue/IDEA-316081/Gradle-8-toolchain-error-Toolchain-from-executable-property-does-not-match-toolchain-from-javaLauncher-property-when-different
+    gradle.taskGraph.whenReady {
+        tasks.withType(JavaExec) {
+            if (name.endsWith(".main()")) {
+                println("Setting executable to java launcher for ${name}")
+                it.setExecutable(javaLauncher.get().executablePath.asFile.absolutePath)
+            }
+        }
+    }
 }
